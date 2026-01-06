@@ -1,14 +1,4 @@
-//binary exponentiation 
-int powerMod(int base, int power, int MOD = mod){
-    int res = 1%MOD;
-    while(power){
-        if(power&1)res = (res*base)%MOD;
-        base = (base*base)%MOD;
-        power = power>>1;
-    }
-    return res;
-}
-// inverseMod
-int inverseMod(int n, int MOD = mod){
-    return powerMod(n, MOD-2, MOD);
+long long inverseMod(long long n, long long MOD = mod){
+    if(n==1) return 1;
+    return (MOD - ((MOD/n)*inverseMod(MOD%n))%MOD+MOD)%MOD;
 }
