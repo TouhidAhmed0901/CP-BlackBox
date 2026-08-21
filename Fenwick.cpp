@@ -3,13 +3,12 @@ struct Fenwick{
     vector<long long> bit;
     Fenwick(int n) : n(n), bit(n + 1, 0) {}
 
-    // Add val to index idx
     void update(int idx, long long val) {
         for (; idx <= n; idx += idx & -idx) {
             bit[idx] += val;
         }
     }
-    // Sum of [1 ... idx]
+
     long long query(int idx) {
         long long sum = 0;
         for (; idx > 0; idx -= idx & -idx) {
